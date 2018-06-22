@@ -1,0 +1,47 @@
+<div id="rootJS"></div>
+<div id="rootR"></div>
+<div id="rootJsx"></div>
+<div id="tick"></div>
+<script src="https://fb.me/react-0.14.3.js"></script>
+<script src="https://fb.me/react-dom-0.14.3.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    const rootJS = document.getElementById('rootJS');
+    const rootR = document.getElementById('rootR');
+    const rootJsx = document.getElementById('rootJsx');
+    const rootTick = document.getElementById('tick');
+
+    /* Javascript Way */
+    const elementJS = document.createElement('div');
+    elementJS.textContent = 'Hello JavaScript';
+    elementJS.className = 'container';
+    rootJS.appendChild(elementJS);
+
+    /* React Way */
+    const elementR = React.createElement('div',
+        { className: 'container' },
+        'Hello React! ',
+        'Goodbye');
+    console.log(elementR);
+    ReactDOM.render(elementR, rootR);
+
+    /* Jsx Way */
+    const props = {
+        className: 'container',
+        children: 'Hi Jsx Children'
+    }
+    const elementJsx = <div className='my-class' {...props} ></div>
+    ReactDOM.render(elementJsx, rootJsx);
+
+    /* Display time*/
+    function tick() {
+        const time = new Date().toLocaleTimeString();
+        const ele = <div>
+            It is
+            <input value={time}/>
+            </div>
+        ReactDOM.render(ele, rootTick);
+    }
+    tick()
+    setInterval(tick,1000);
+</script>

@@ -1,0 +1,47 @@
+<div id="root"></div>
+<script src="https://fb.me/react-0.14.3.js"></script>
+<script src="https://fb.me/react-dom-0.14.3.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+class NameForm extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {error: this.props.getErrorMessage('')};
+    }
+    handleFormSubmit = (event) => {
+        event.preventDefault();
+        const inputValue = event.target.elements.username.value;
+        const errorMsg = this.props.getErrorMessage(inputValue);
+        if(inputValue) {
+            alert(`You have submitted: ${inputValue}`);
+        } else {
+            this.setState({error: 'Please enter a value'});
+        }
+    }
+    handleFormChange = (event) => {
+        const val = event.target.value;
+        this.setState({error: this.props.getErrorMessage(val)});
+    }
+    render() {
+        const err = this.state.error;
+        return (
+            <form onSubmit={this.handleFormSubmit}>
+                <label>
+                    Name : <input type="text" name="username" onChange = {this.handleFormChange}/>
+                    {err && <div style={{color:'red'}}>{err}</div>}
+                    <button disabled={Boolean(err)} type="submit">Submit</button>
+                </label>
+            </form>
+        );
+    }
+}
+const element = <NameForm
+    getErrorMessage = { (value) => {
+        if(value != '' && value.length < 3) {
+            return 'Value must be of length 3'
+        }
+        return '';
+    }}
+/>
+ReactDOM.render(element, document.getElementById('root'));
+</script>
