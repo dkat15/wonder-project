@@ -1,0 +1,33 @@
+{
+  "name": "react-dev",
+  "version": "1.0.0",
+  "description": "Demo projects for practice",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "rimraf -Rf build && mkdir build",
+    "start": "webpack-dev-server --colors --hot --inline --open"
+  },
+  "author": "Deepika Katoch",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^2.1.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-plugin-react-css-modules": "^5.0.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "webpack-dev-server": "^3.1.5"
+  }
+}
